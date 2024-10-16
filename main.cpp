@@ -275,8 +275,31 @@ void barra(int respondidas) {
 
 // Funcion para mostrar el mensaje de reintentar
 void textoReintente() {
-    cout << "Lo siento, perdiste todas tus vidas." << endl;
-    cout << "¿Te gustaría intentarlo nuevamente? (si/no)" << endl;
+    int tiempo = 1;
+ 
+    
+        
+    do
+    {
+        cout << "----------_/_/_/_/_/_/_/_/_/----------" << endl;
+        cout << "--------------GAME OVER---------------" << endl;
+        cout << "----------INTENTE OTRA VEZ------------" << endl;
+        cout << "----------_/_/_/_/_/_/_/_/_/----------" << endl;
+        cout << "Cargando...." << endl;
+        sleep(1);
+        system("cls");
+        cout << "----------/_/_/_/_/_/_/_/_/_/----------"<< endl;
+        cout << "--------------GAME OVER---------------" << endl;
+        cout << "----------INTENTE OTRA VEZ------------" << endl;
+        cout << "----------/_/_/_/_/_/_/_/_/_/----------" << endl;
+        cout << "Cargando......" << endl;
+        sleep(1);
+        system("cls");
+        tiempo += 1;
+    } while (tiempo == 5);
+    
+    
+    
 }
 
 // Funcion que gestiona los niveles del juego
@@ -310,9 +333,9 @@ void jugar() {
             cin >> respuesta;
             if (respuesta == "si") {
                 nivel = 1;
-                system("clear");
+                system("cls");
             } else {
-                nivel = 6; // Salir del juego
+                nivel = 6; 
             }
         }
     } while (nivel <= 5);
