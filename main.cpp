@@ -90,7 +90,7 @@ bool nivel1() {
 
             cout << preguntasNivel1[i] << endl;
             cin >> respuesta;
-            system("clear");
+            system("cls");
             if (respuesta != respuestasNivel1[i]) vidas--;
         } while (respuesta != respuestasNivel1[i] && vidas > 0);
 
@@ -123,7 +123,7 @@ bool nivel2() {
             cout << "----------Pregunta " << i+1 << "---------" << endl;
             cout << preguntasNivel2[i] << endl;
             cin >> respuesta;
-            system("clear");
+            system("cls");
             if (respuesta != respuestasNivel2[i]) vidas--;
         } while (respuesta != respuestasNivel2[i] && vidas > 0);
 
@@ -157,7 +157,7 @@ bool nivel3() {
             cout << preguntasNivel3[i] << endl;
             cin >> respuesta;
             transform(respuesta.begin(), respuesta.end(), respuesta.begin(), ::tolower);
-            system("clear");
+            system("cls");
             if (respuesta != respuestasNivel3[i]) vidas--;
         } while (respuesta != respuestasNivel3[i] && vidas > 0);
 
@@ -191,7 +191,7 @@ bool nivel4() {
             cout << preguntasNivel4[i] << endl;
             cin >> respuesta;
             transform(respuesta.begin(), respuesta.end(), respuesta.begin(), ::tolower);
-            system("clear");
+            system("cls");
             if (respuesta != respuestasNivel4[i]) vidas--;
         } while (respuesta != respuestasNivel4[i] && vidas > 0);
 
@@ -224,7 +224,7 @@ bool nivel5() {
             cout << "----------Pregunta " << i+1 << "---------" << endl;
             cout << preguntasNivel5[i] << endl;
             cin >> respuesta;
-            system("clear");
+            system("cls");
             if (respuesta != respuestasNivel5[i]) vidas--;
         } while (respuesta != respuestasNivel5[i] && vidas > 0);
 
