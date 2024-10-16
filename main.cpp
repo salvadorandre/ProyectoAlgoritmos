@@ -90,7 +90,7 @@ bool nivel1() {
 
             cout << preguntasNivel1[i] << endl;
             cin >> respuesta;
-            system("cls");
+            system("clear");
             if (respuesta != respuestasNivel1[i]) vidas--;
         } while (respuesta != respuestasNivel1[i] && vidas > 0);
 
@@ -123,7 +123,7 @@ bool nivel2() {
             cout << "----------Pregunta " << i+1 << "---------" << endl;
             cout << preguntasNivel2[i] << endl;
             cin >> respuesta;
-            system("cls");
+            system("clear");
             if (respuesta != respuestasNivel2[i]) vidas--;
         } while (respuesta != respuestasNivel2[i] && vidas > 0);
 
@@ -141,7 +141,7 @@ bool nivel3() {
             "La montaña es muy alta.",
             "La nieve cubre el sol."
     };
-    vector<string> respuestasNivel3 = {"agua", "montaña", "nieve"};
+    vector<string> respuestasNivel3 = {"agua", "montania", "nieve"};
     int vidas = 5, respondidas = 6;
     bool gano = false;
     string respuesta;
@@ -156,8 +156,12 @@ bool nivel3() {
             cout << "----------Pregunta " << i+1 << "---------" << endl;
             cout << preguntasNivel3[i] << endl;
             cin >> respuesta;
-            transform(respuesta.begin(), respuesta.end(), respuesta.begin(), ::tolower);
+<<<<<<< HEAD
             system("cls");
+=======
+            transform(respuesta.begin(), respuesta.end(), respuesta.begin(), ::tolower);
+            system("clear");
+>>>>>>> origin/main
             if (respuesta != respuestasNivel3[i]) vidas--;
         } while (respuesta != respuestasNivel3[i] && vidas > 0);
 
@@ -191,7 +195,7 @@ bool nivel4() {
             cout << preguntasNivel4[i] << endl;
             cin >> respuesta;
             transform(respuesta.begin(), respuesta.end(), respuesta.begin(), ::tolower);
-            system("cls");
+            system("clear");
             if (respuesta != respuestasNivel4[i]) vidas--;
         } while (respuesta != respuestasNivel4[i] && vidas > 0);
 
@@ -224,7 +228,7 @@ bool nivel5() {
             cout << "----------Pregunta " << i+1 << "---------" << endl;
             cout << preguntasNivel5[i] << endl;
             cin >> respuesta;
-            system("cls");
+            system("clear");
             if (respuesta != respuestasNivel5[i]) vidas--;
         } while (respuesta != respuestasNivel5[i] && vidas > 0);
 
@@ -232,6 +236,9 @@ bool nivel5() {
     }
 
     gano = vidas > 0;
+    if (gano){
+        hasGanado();
+    }
     return gano;
 }
 
@@ -250,27 +257,74 @@ void barraDeVida(int vidas) {
 // Funcion para mostrar el progreso del jugador
 void barra(int respondidas) {
     int avanze = (respondidas / 15.0) * 100;
-    vector<vector<string>> progreso(3, vector<string>(5, " - "));
-    progreso[2][4] = " -> Salida ";
+    string progreso[3][5];
+    
 
     cout << "Progreso del jugador: " << avanze << "%" << endl;
     cout << "------Mapa------" << endl;
     cout << " 1  2  3  4  5" << endl;
 
-    if (respondidas > 0 && respondidas <= 3) {
-        progreso[0][respondidas - 1] = " Tu";
-    } else if (respondidas > 3 && respondidas <= 6) {
-        progreso[1][respondidas - 4] = " Tu";
-    } else if (respondidas > 6 && respondidas <= 15) {
-        progreso[2][respondidas - 9] = " Tu";
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            progreso[j][i] = " - ";
+        }
+        
+    }
+    progreso[2][4] = " -> Salida ";
+
+    if (respondidas > 0 && respondidas <= 3){
+        for (int i = 0; i < 3; i++)
+        {
+            progreso[respondidas-1][0]=" Tu";
+        }
+        
+    }
+    if (respondidas > 3 && respondidas <= 6){
+        int respondidas1 = respondidas -3;
+        for (int i = 0; i < respondidas1; i++)
+        {
+            progreso[respondidas1-1][1]=" Tu";
+        }
+        
+    }
+    if (respondidas > 6 && respondidas <= 9){
+        int respondidas2 = respondidas -6;
+        for (int i = 0; i < respondidas2; i++)
+        {
+            progreso[respondidas2-1][2]=" Tu";
+        }
+        
+    }
+      if (respondidas > 9 && respondidas <= 12){
+        int respondidas3 = respondidas -9;
+        for (int i = 0; i < respondidas3; i++)
+        {
+            progreso[respondidas3-1][3]=" Tu";
+        }
+        
+    }
+    if (respondidas > 12){
+        int respondidas4 = respondidas -12;
+        for (int i = 0; i < respondidas4; i++)
+        {
+            progreso[respondidas4-1][4]=" Tu";
+        }
+        
     }
 
-    for (int i = 0; i < progreso.size(); i++) {
-        for (int j = 0; j < progreso[i].size(); j++) {
-            cout << progreso[i][j];
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            cout<<progreso[i][j];
         }
-        cout << endl;
+        cout<<""<<endl;
     }
+    
+    
+    
 }
 
 // Funcion para mostrar el mensaje de reintentar
@@ -301,6 +355,34 @@ void textoReintente() {
     
     
 }
+void hasGanado() {
+    int tiempo = 1;
+ 
+    
+        
+    do
+    {
+        cout << "----------_/_/_/_/_/_/_/_/_/----------" << endl;
+        cout << "--------------Has ganado---------------" << endl;
+        cout << "----------Felicidades!!!!!------------" << endl;
+        cout << "----------_/_/_/_/_/_/_/_/_/----------" << endl;
+        cout << "Cargando...." << endl;
+        sleep(1);
+        system("cls");
+        cout << "----------/_/_/_/_/_/_/_/_/_/----------"<< endl;
+        cout << "--------------Has ganado---------------" << endl;
+        cout << "----------Felicidades!!!!------------" << endl;
+        cout << "----------/_/_/_/_/_/_/_/_/_/----------" << endl;
+        cout << "Cargando......" << endl;
+        sleep(1);
+        system("cls");
+        tiempo += 1;
+    } while (tiempo == 5);
+    
+    
+    
+}
+
 
 // Funcion que gestiona los niveles del juego
 void jugar() {
