@@ -1,0 +1,3 @@
+C:/Users/Andre/CLionProjects/ProyectoAlgoritmos/cmake-build-debug/CMakeFiles/ProyectoAlgoritmos.dir
+C:/Users/Andre/CLionProjects/ProyectoAlgoritmos/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Andre/CLionProjects/ProyectoAlgoritmos/cmake-build-debug/CMakeFiles/rebuild_cache.dir
