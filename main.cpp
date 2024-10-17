@@ -3,6 +3,8 @@
 #include <vector>
 #include <unistd.h> // Para usar sleep
 #include <algorithm> // Para usar transform (en minusculas)
+#include <fstream> //Para usar archivos en el codigo 
+
 
 // Prototipos de las funciones
 void pantallaPrincipal();
@@ -20,12 +22,20 @@ void hasGanado();
 using namespace std;
 
 int main() {
+	
+	fstream archivo;
+	
+	
     pantallaPrincipal();
     return 0;
 }
 
 // Carga de pantalla principal del juego
 void pantallaPrincipal() {
+	
+	fstream archivo; //Creacion del archivo
+	
+	
     int tiempo = 0;
     int carga;
 
@@ -73,8 +83,7 @@ bool nivel1() {
     vector<string> preguntasNivel1 = {
             "Soy un numero par, divideme por 2 y el resultado es 18",
             "Soy un numero mayor que 10, si me restas 4, el resultado es 8",
-            "Soy un numero impar, si me sumas 9 y luego lo divides entre 2, obtienes 17"
-    };
+            "Soy un numero impar, si me sumas 9 y luego lo divides entre 2, obtienes 17"};
     vector<int> respuestasNivel1 = {36, 12, 25};
     int vidas = 5, respondidas = 0;
     bool gano = false;
