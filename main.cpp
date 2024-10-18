@@ -70,12 +70,11 @@ void pantallaPrincipal() {
 
 // Funcion para el nivel 1
 bool nivel1() {
-    vector<string> preguntasNivel1 = {
-            "Soy un numero par, divideme por 2 y el resultado es 18",
-            "Soy un numero mayor que 10, si me restas 4, el resultado es 8",
-            "Soy un numero impar, si me sumas 9 y luego lo divides entre 2, obtienes 17"
-    };
-    vector<int> respuestasNivel1 = {36, 12, 25};
+
+    string preguntasNivel1[3] = { "Soy un numero par, divideme por 2 y el resultado es 18", "Soy un numero mayor que 10, si me restas 4, el resultado es 8",
+    "Soy un numero impar, si me sumas 9 y luego lo divides entre 2, obtienes 17" };
+
+    int respuestasNivel1[3] = {36, 12, 25};
     int vidas = 5, respondidas = 0;
     bool gano = false;
     int respuesta;
@@ -104,12 +103,12 @@ bool nivel1() {
 
 // Funcion para el nivel 2
 bool nivel2() {
-    vector<string> preguntasNivel2 = {
+    string preguntasNivel2[3] = {
             "Completa la secuencia: 2, 4, 6, 8, ?",
             "Completa la secuencia: 1, 3, 5, 7, ?",
             "Completa la secuencia: 5, 10, 15, 20, ?"
     };
-    vector<int> respuestasNivel2 = {10, 9, 25};
+    int respuestasNivel2[3] = {10, 9, 25};
     int vidas = 5, respondidas = 3;
     bool gano = false;
     int respuesta;
@@ -137,12 +136,12 @@ bool nivel2() {
 
 // Funcion para el nivel 3
 bool nivel3() {
-    vector<string> preguntasNivel3 = {
+    string preguntasNivel3[3] = {
             "Encuentra la palabra oculta: El agua siempre fluye con fuerza.",
             "La montaña es muy alta.",
             "La nieve cubre el sol."
     };
-    vector<string> respuestasNivel3 = {"agua", "montania", "nieve"};
+    string respuestasNivel3[3] = {"agua", "montania", "nieve"};
     int vidas = 5, respondidas = 6;
     bool gano = false;
     string respuesta;
@@ -171,12 +170,12 @@ bool nivel3() {
 
 // Funcion para el nivel 4
 bool nivel4() {
-    vector<string> preguntasNivel4 = {
+    string preguntasNivel4[3] = {
             "Reordena las letras para obtener una palabra: FFULY",
             "Reordena las letras para obtener una palabra: OROZ",
             "Reordena las letras para obtener una palabra: MINA"
     };
-    vector<string> respuestasNivel4 = {"luffy", "zoro", "nami"};
+    string respuestasNivel4[3] = {"luffy", "zoro", "nami"};
     int vidas = 5, respondidas = 9;
     bool gano = false;
     string respuesta;
@@ -205,12 +204,12 @@ bool nivel4() {
 
 // Funcion para el nivel 5
 bool nivel5() {
-    vector<string> preguntasNivel5 = {
+    string preguntasNivel5[3] = {
             "· · ·   +    ----",
             "¿Cuál es el resultado de la siguiente operación?:",
             " ·     *    · · ·"
     };
-    vector<int> respuestasNivel5 = {8, -20, 3};
+    int respuestasNivel5[3] = {8, -20, 3};
     int vidas = 5, respondidas = 12;
     bool gano = false;
     int respuesta;
