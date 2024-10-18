@@ -1,10 +1,7 @@
 #include <iostream>
 #include <string>
-#include <vector>
 #include <unistd.h> // Para usar sleep
 #include <algorithm> // Para usar transform (en minusculas)
-#include <fstream> //Para usar archivos en el codigo 
-
 
 // Prototipos de las funciones
 void pantallaPrincipal();
@@ -22,20 +19,12 @@ void hasGanado();
 using namespace std;
 
 int main() {
-	
-	fstream archivo;
-	
-	
     pantallaPrincipal();
     return 0;
 }
 
 // Carga de pantalla principal del juego
 void pantallaPrincipal() {
-	
-	fstream archivo; //Creacion del archivo
-	
-	
     int tiempo = 0;
     int carga;
 
@@ -80,11 +69,12 @@ void pantallaPrincipal() {
 
 // Funcion para el nivel 1
 bool nivel1() {
-    vector<string> preguntasNivel1 = {
-            "Soy un numero par, divideme por 2 y el resultado es 18",
-            "Soy un numero mayor que 10, si me restas 4, el resultado es 8",
-            "Soy un numero impar, si me sumas 9 y luego lo divides entre 2, obtienes 17"};
-    vector<int> respuestasNivel1 = {36, 12, 25};
+    string preguntasNivel1[3] = {
+        "Soy un numero par, divideme por 2 y el resultado es 18",
+        "Soy un numero mayor que 10, si me restas 4, el resultado es 8",
+        "Soy un numero impar, si me sumas 9 y luego lo divides entre 2, obtienes 17"
+    };
+    int respuestasNivel1[3] = {36, 12, 25};
     int vidas = 5, respondidas = 0;
     bool gano = false;
     int respuesta;
@@ -113,12 +103,12 @@ bool nivel1() {
 
 // Funcion para el nivel 2
 bool nivel2() {
-    vector<string> preguntasNivel2 = {
-            "Completa la secuencia: 2, 4, 6, 8, ?",
-            "Completa la secuencia: 1, 3, 5, 7, ?",
-            "Completa la secuencia: 5, 10, 15, 20, ?"
+    string preguntasNivel2[3] = {
+        "Completa la secuencia: 2, 4, 6, 8, ?",
+        "Completa la secuencia: 1, 3, 5, 7, ?",
+        "Completa la secuencia: 5, 10, 15, 20, ?"
     };
-    vector<int> respuestasNivel2 = {10, 9, 25};
+    int respuestasNivel2[3] = {10, 9, 25};
     int vidas = 5, respondidas = 3;
     bool gano = false;
     int respuesta;
@@ -146,12 +136,12 @@ bool nivel2() {
 
 // Funcion para el nivel 3
 bool nivel3() {
-    vector<string> preguntasNivel3 = {
-            "Encuentra la palabra oculta: El agua siempre fluye con fuerza.",
-            "La montaÃ±a es muy alta.",
-            "La nieve cubre el sol."
+    string preguntasNivel3[3] = {
+        "Encuentra la palabra oculta: El agua siempre fluye con fuerza.",
+        "La montaña es muy alta.",
+        "La nieve cubre el sol."
     };
-    vector<string> respuestasNivel3 = {"agua", "montania", "nieve"};
+    string respuestasNivel3[3] = {"agua", "montania", "nieve"};
     int vidas = 5, respondidas = 6;
     bool gano = false;
     string respuesta;
@@ -180,12 +170,12 @@ bool nivel3() {
 
 // Funcion para el nivel 4
 bool nivel4() {
-    vector<string> preguntasNivel4 = {
-            "Reordena las letras para obtener una palabra: FFULY",
-            "Reordena las letras para obtener una palabra: OROZ",
-            "Reordena las letras para obtener una palabra: MINA"
+    string preguntasNivel4[3] = {
+        "Reordena las letras para obtener una palabra: FFULY",
+        "Reordena las letras para obtener una palabra: OROZ",
+        "Reordena las letras para obtener una palabra: MINA"
     };
-    vector<string> respuestasNivel4 = {"luffy", "zoro", "nami"};
+    string respuestasNivel4[3] = {"luffy", "zoro", "nami"};
     int vidas = 5, respondidas = 9;
     bool gano = false;
     string respuesta;
@@ -214,12 +204,12 @@ bool nivel4() {
 
 // Funcion para el nivel 5
 bool nivel5() {
-    vector<string> preguntasNivel5 = {
-            "Â· Â· Â·   +    ----",
-            "Â¿CuÃ¡l es el resultado de la siguiente operaciÃ³n?:",
-            " Â·     *    Â· Â· Â·"
+    string preguntasNivel5[3] = {
+        "· · ·   +    ----",
+        "¿Cuál es el resultado de la siguiente operación?:",
+        " ·     *    · · ·"
     };
-    vector<int> respuestasNivel5 = {8, -20, 3};
+    int respuestasNivel5[3] = {8, -20, 3};
     int vidas = 5, respondidas = 12;
     bool gano = false;
     int respuesta;
@@ -264,167 +254,43 @@ void barraDeVida(int vidas) {
 void barra(int respondidas) {
     int avanze = (respondidas / 15.0) * 100;
     string progreso[3][5];
-    
 
     cout << "Progreso del jugador: " << avanze << "%" << endl;
     cout << "------Mapa------" << endl;
     cout << " 1  2  3  4  5" << endl;
 
-    for (int i = 0; i < 5; i++)
-    {
-        for (int j = 0; j < 3; j++)
-        {
-            progreso[j][i] = " - ";
-        }
-        
-    }
-    progreso[2][4] = " -> Salida ";
-
-    if (respondidas > 0 && respondidas <= 3){
-        for (int i = 0; i < 3; i++)
-        {
-            progreso[respondidas-1][0]=" Tu";
-        }
-        
-    }
-    if (respondidas > 3 && respondidas <= 6){
-        int respondidas1 = respondidas -3;
-        for (int i = 0; i < respondidas1; i++)
-        {
-            progreso[respondidas1-1][1]=" Tu";
-        }
-        
-    }
-    if (respondidas > 6 && respondidas <= 9){
-        int respondidas2 = respondidas -6;
-        for (int i = 0; i < respondidas2; i++)
-        {
-            progreso[respondidas2-1][2]=" Tu";
-        }
-        
-    }
-      if (respondidas > 9 && respondidas <= 12){
-        int respondidas3 = respondidas -9;
-        for (int i = 0; i < respondidas3; i++)
-        {
-            progreso[respondidas3-1][3]=" Tu";
-        }
-        
-    }
-    if (respondidas > 12){
-        int respondidas4 = respondidas -12;
-        for (int i = 0; i < respondidas4; i++)
-        {
-            progreso[respondidas4-1][4]=" Tu";
-        }
-        
-    }
-
-    for (int i = 0; i < 3; i++)
-    {
-        for (int j = 0; j < 5; j++)
-        {
-            cout<<progreso[i][j];
-        }
-        cout<<""<<endl;
-    }
-    
-    
-    
-}
-
-// Funcion para mostrar el mensaje de reintentar
-void textoReintente() {
-    int tiempo = 1;
- 
-    
-        
-    do
-    {
-        cout << "----------_/_/_/_/_/_/_/_/_/----------" << endl;
-        cout << "--------------GAME OVER---------------" << endl;
-        cout << "----------INTENTE OTRA VEZ------------" << endl;
-        cout << "----------_/_/_/_/_/_/_/_/_/----------" << endl;
-        cout << "Cargando...." << endl;
-        sleep(1);
-        system("cls");
-        cout << "----------/_/_/_/_/_/_/_/_/_/----------"<< endl;
-        cout << "--------------GAME OVER---------------" << endl;
-        cout << "----------INTENTE OTRA VEZ------------" << endl;
-        cout << "----------/_/_/_/_/_/_/_/_/_/----------" << endl;
-        cout << "Cargando......" << endl;
-        sleep(1);
-        system("cls");
-        tiempo += 1;
-    } while (tiempo == 5);
-    
-    
-    
-}
-void hasGanado() {
-    int tiempo = 1;
- 
-    
-        
-    do
-    {
-        cout << "----------_/_/_/_/_/_/_/_/_/----------" << endl;
-        cout << "--------------Has ganado---------------" << endl;
-        cout << "----------Felicidades!!!!!------------" << endl;
-        cout << "----------_/_/_/_/_/_/_/_/_/----------" << endl;
-        cout << "Cargando...." << endl;
-        sleep(1);
-        system("cls");
-        cout << "----------/_/_/_/_/_/_/_/_/_/----------"<< endl;
-        cout << "--------------Has ganado---------------" << endl;
-        cout << "----------Felicidades!!!!------------" << endl;
-        cout << "----------/_/_/_/_/_/_/_/_/_/----------" << endl;
-        cout << "Cargando......" << endl;
-        sleep(1);
-        system("cls");
-        tiempo += 1;
-    } while (tiempo == 5);
-    
-    
-    
-}
-
-
-// Funcion que gestiona los niveles del juego
-void jugar() {
-    int nivel = 1;
-    bool gano = false;
-
-    do {
-        switch (nivel) {
-            case 1:
-                gano = nivel1();
-                break;
-            case 2:
-                gano = nivel2();
-                break;
-            case 3:
-                gano = nivel3();
-                break;
-            case 4:
-                gano = nivel4();
-                break;
-            case 5:
-                gano = nivel5();
-                break;
-        }
-        if (gano) {
-            nivel++;
-        } else {
-            textoReintente();
-            string respuesta;
-            cin >> respuesta;
-            if (respuesta == "si") {
-                nivel = 1;
-                system("cls");
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 3; j++) {
+            if (respondidas >= (i * 3 + j + 1)) {
+                cout << "X ";
             } else {
-                nivel = 6; 
+                cout << "O ";
             }
         }
-    } while (nivel <= 5);
+        cout << endl;
+    }
 }
+
+// Mensaje de reintentar
+void textoReintente() {
+    cout << "Juego Terminado, vuelve a intentarlo mas tarde!" << endl;
+}
+
+// Funcion principal de juego
+void jugar() {
+    bool gano = false;
+    gano = nivel1();
+    if (gano) gano = nivel2();
+    if (gano) gano = nivel3();
+    if (gano) gano = nivel4();
+    if (gano) gano = nivel5();
+    if (!gano) {
+        textoReintente();
+    }
+}
+
+// Mensaje de victoria
+void hasGanado() {
+    cout << "Felicitaciones has completado todos los niveles y ganado el juego!" << endl;
+}
+
