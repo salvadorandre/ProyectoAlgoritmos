@@ -3,6 +3,8 @@
 #include <vector>
 #include <unistd.h> // Para usar sleep
 #include <algorithm> // Para usar transform (en minusculas)
+#include <fstream> // Para utilizar archivos
+
 
 // Prototipos de las funciones
 void pantallaPrincipal();
@@ -16,6 +18,8 @@ void barra(int respondidas);
 void textoReintente();
 void jugar();
 void hasGanado();
+void historial();
+
 
 using namespace std;
 
@@ -29,6 +33,7 @@ void pantallaPrincipal() {
     int tiempo = 0;
     int carga;
 
+    //animacion de carga
     do {
         carga = (tiempo / 3.0) * 100;
 
@@ -53,7 +58,8 @@ void pantallaPrincipal() {
         cout << "        Prision de los Enigmas       " << endl;
         cout << "------------------------------------" << endl;
         cout << "1. Jugar" << endl;
-        cout << "2. Salir" << endl;
+        cout << "2. Historial" << endl;
+        cout << "3. Salir" << endl;
         cin >> opc;
 
         switch(opc) {
@@ -61,18 +67,21 @@ void pantallaPrincipal() {
                 system("cls");
                 jugar();
                 break;
+            case 2:
+                historial();
+                break;
             default:
-                opc = 2;
+                opc = 3;
                 break;
         }
-    } while (opc != 2);
+    } while (opc != 3);
 }
 
 // Funcion para el nivel 1
 bool nivel1() {
 
     string preguntasNivel1[3] = { "Soy un numero par, divideme por 2 y el resultado es 18", "Soy un numero mayor que 10, si me restas 4, el resultado es 8",
-    "Soy un numero impar, si me sumas 9 y luego lo divides entre 2, obtienes 17" };
+                                  "Soy un numero impar, si me sumas 9 y luego lo divides entre 2, obtienes 17" };
 
     int respuestasNivel1[3] = {36, 12, 25};
     int vidas = 5, respondidas = 0;
@@ -254,7 +263,7 @@ void barraDeVida(int vidas) {
 void barra(int respondidas) {
     int avanze = (respondidas / 15.0) * 100;
     string progreso[3][5];
-    
+
 
     cout << "Progreso del jugador: " << avanze << "%" << endl;
     cout << "------Mapa------" << endl;
@@ -266,7 +275,7 @@ void barra(int respondidas) {
         {
             progreso[j][i] = " - ";
         }
-        
+
     }
     progreso[2][4] = " -> Salida ";
 
@@ -275,7 +284,7 @@ void barra(int respondidas) {
         {
             progreso[respondidas-1][0]=" Tu";
         }
-        
+
     }
     if (respondidas > 3 && respondidas <= 6){
         int respondidas1 = respondidas -3;
@@ -283,7 +292,7 @@ void barra(int respondidas) {
         {
             progreso[respondidas1-1][1]=" Tu";
         }
-        
+
     }
     if (respondidas > 6 && respondidas <= 9){
         int respondidas2 = respondidas -6;
@@ -291,15 +300,15 @@ void barra(int respondidas) {
         {
             progreso[respondidas2-1][2]=" Tu";
         }
-        
+
     }
-      if (respondidas > 9 && respondidas <= 12){
+    if (respondidas > 9 && respondidas <= 12){
         int respondidas3 = respondidas -9;
         for (int i = 0; i < respondidas3; i++)
         {
             progreso[respondidas3-1][3]=" Tu";
         }
-        
+
     }
     if (respondidas > 12){
         int respondidas4 = respondidas -12;
@@ -307,7 +316,7 @@ void barra(int respondidas) {
         {
             progreso[respondidas4-1][4]=" Tu";
         }
-        
+
     }
 
     for (int i = 0; i < 3; i++)
@@ -318,72 +327,82 @@ void barra(int respondidas) {
         }
         cout<<""<<endl;
     }
-    
-    
-    
+
+
+
 }
 
 // Funcion para mostrar el mensaje de reintentar
 void textoReintente() {
     int tiempo = 1;
- 
-    
-        
+
+
+
     do
     {
-        cout << "----------_/_/_/_/_/_/_/_/_/----------" << endl;
+        cout << "----------////////_/----------" << endl;
         cout << "--------------GAME OVER---------------" << endl;
         cout << "----------INTENTE OTRA VEZ------------" << endl;
-        cout << "----------_/_/_/_/_/_/_/_/_/----------" << endl;
+        cout << "----------////////_/----------" << endl;
         cout << "Cargando...." << endl;
         sleep(1);
         system("cls");
-        cout << "----------/_/_/_/_/_/_/_/_/_/----------"<< endl;
+        cout << "----------/////////_/----------"<< endl;
         cout << "--------------GAME OVER---------------" << endl;
         cout << "----------INTENTE OTRA VEZ------------" << endl;
-        cout << "----------/_/_/_/_/_/_/_/_/_/----------" << endl;
+        cout << "----------/////////_/----------" << endl;
         cout << "Cargando......" << endl;
         sleep(1);
         system("cls");
         tiempo += 1;
     } while (tiempo == 5);
-    
-    
-    
-}
-void hasGanado() {
-    int tiempo = 1;
- 
-    
-        
-    do
-    {
-        cout << "----------_/_/_/_/_/_/_/_/_/----------" << endl;
-        cout << "--------------Has ganado---------------" << endl;
-        cout << "----------Felicidades!!!!!------------" << endl;
-        cout << "----------_/_/_/_/_/_/_/_/_/----------" << endl;
-        cout << "Cargando...." << endl;
-        sleep(1);
-        system("cls");
-        cout << "----------/_/_/_/_/_/_/_/_/_/----------"<< endl;
-        cout << "--------------Has ganado---------------" << endl;
-        cout << "----------Felicidades!!!!------------" << endl;
-        cout << "----------/_/_/_/_/_/_/_/_/_/----------" << endl;
-        cout << "Cargando......" << endl;
-        sleep(1);
-        system("cls");
-        tiempo += 1;
-    } while (tiempo == 5);
-    
-    
-    
 }
 
+//Funcion para comprobar si gano
+void hasGanado() {
+    int tiempo = 1;
+
+    do
+    {
+        cout << "----------////////_/----------" << endl;
+        cout << "--------------Has ganado---------------" << endl;
+        cout << "----------Felicidades!!!!!------------" << endl;
+        cout << "----------////////_/----------" << endl;
+        cout << "Cargando...." << endl;
+        sleep(1);
+        system("cls");
+        cout << "----------/////////_/----------"<< endl;
+        cout << "--------------Has ganado---------------" << endl;
+        cout << "----------Felicidades!!!!------------" << endl;
+        cout << "----------/////////_/----------" << endl;
+        cout << "Cargando......" << endl;
+        sleep(1);
+        system("cls");
+        tiempo += 1;
+    } while (tiempo == 5);
+
+
+
+}
+
+//Funcion para guardar en el archivo
+void guardarJugador(string nombre, int nivel) {
+    fstream historial;
+    historial.open("baseJugadores.txt", ios::app);
+
+    historial << nombre << " - " << nivel << endl;
+    historial.close();
+}
 
 // Funcion que gestiona los niveles del juego
 void jugar() {
     int nivel = 1;
     bool gano = false;
+    string nombre;
+
+    cout << "Ingresa tu nombre" << endl;
+    cin >> nombre;
+    system("cls");
 
     do {
         switch (nivel) {
@@ -408,13 +427,37 @@ void jugar() {
         } else {
             textoReintente();
             string respuesta;
+            cout << "Quieres reintentar? si/no" << endl;
             cin >> respuesta;
             if (respuesta == "si") {
-                nivel = 1;
                 system("cls");
             } else {
-                nivel = 6; 
+
+                guardarJugador(nombre, nivel);
+                nivel = 6;
             }
         }
     } while (nivel <= 5);
+}
+
+void historial() {
+    fstream historial;
+    historial.open("baseJugadores.txt", ios::in);
+
+    //Si no hay un registro previo
+    if(historial.fail()) {
+        cout << "No hay ningun historial" << endl;
+        historial.close();
+
+        //Por si hay un archivo existente
+    }else {
+        string texto;
+        while(!historial.eof()) {
+            getline(historial, texto);
+            cout << texto << endl;
+        }
+
+        historial.close(); // Cerrar el archivo manualmente
+    }
+
 }
